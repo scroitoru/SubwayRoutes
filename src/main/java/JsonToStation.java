@@ -5,8 +5,8 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 public class JsonToStation {
-    public Station getStations(){
-        Station station = new Station();
+    public Stations getStations(){
+        Stations stations = new Stations();
         try{
             //create Gson instance
             Gson gson = new Gson();
@@ -15,7 +15,7 @@ public class JsonToStation {
             Reader reader = Files.newBufferedReader(Paths.get("src/main/resources/SubwayStations.json"));
 
             // convert JSON string to Station object
-            station = gson.fromJson(reader,Station.class);
+            stations = gson.fromJson(reader, Stations.class);
 
             // close reader
             reader.close();
@@ -23,6 +23,6 @@ public class JsonToStation {
         }catch(Exception ex){
             ex.printStackTrace();
         }
-        return station;
+        return stations;
     }
 }
