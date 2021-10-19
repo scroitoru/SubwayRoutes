@@ -7,7 +7,6 @@ import java.nio.file.Paths;
 
 public class JsonToStation {
     public Stations getStations() throws IOException {
-        Stations stations = new Stations();
             //create Gson instance
             Gson gson = new Gson();
 
@@ -15,7 +14,7 @@ public class JsonToStation {
             Reader reader = Files.newBufferedReader(Paths.get("src/main/resources/SubwayStations.json"));
 
             // convert JSON string to Station object
-            stations = gson.fromJson(reader, Stations.class);
+            Stations stations = gson.fromJson(reader, Stations.class);
 
             // close reader
             reader.close();
