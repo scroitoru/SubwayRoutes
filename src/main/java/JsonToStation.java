@@ -12,7 +12,7 @@ public class JsonToStation {
             Gson gson = new Gson();
 
             //create reader
-            Reader reader = Files.newBufferedReader(Paths.get("SubwayStations.json"));
+            Reader reader = Files.newBufferedReader(Paths.get("src/main/resources/SubwayStations.json"));
 
             // convert JSON string to Station object
             station = gson.fromJson(reader,Station.class);
