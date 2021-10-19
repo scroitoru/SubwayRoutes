@@ -4,7 +4,6 @@ public class Station {
     List<Feature> features;
 
     public static class Feature{
-        String type;
         Properties properties;
         Geometry geometry;
     }
@@ -13,12 +12,11 @@ public class Station {
         String name;
         String url;
         String line;
-        int objectid;
+        String objectid;
         String notes;
     }
 
     public static class Geometry{
-        String type;
         List<Double> coordinates;
     }
 }
