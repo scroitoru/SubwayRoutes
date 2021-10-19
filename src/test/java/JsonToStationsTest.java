@@ -9,7 +9,7 @@ class JsonToStationsTest {
     @Test
     void getStations() throws IOException {
         //given
-        JsonToStation parseJson = new JsonToStation();
+        JsonToStations parseJson = new JsonToStations();
 
         //when
         Stations stations = parseJson.getStations();
