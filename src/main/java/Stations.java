@@ -3,12 +3,12 @@ import java.util.List;
 public class Stations {
     List<Feature> features;
 
-    public static class Feature{
+    public static class Feature {
         Properties properties;
         Geometry geometry;
     }
 
-    public static class Properties{
+    public static class Properties {
         String name;
         String url;
         String line;
@@ -16,7 +16,7 @@ public class Stations {
         String notes;
     }
 
-    public static class Geometry{
+    public static class Geometry {
         List<Double> coordinates;
     }
 }
