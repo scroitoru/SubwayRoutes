@@ -1,9 +1,10 @@
 import com.google.gson.annotations.SerializedName;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class SubwayLines {
+public class Lines {
+    public List<List<String>> allLines;
+    public List<String> lineNames;
     public List<String> A;
     public List<String> B;
     public List<String> C;
@@ -17,6 +18,7 @@ public class SubwayLines {
     public List<String> N;
     public List<String> Q;
     public List<String> R;
+    public List<String> S;
     public List<String> W;
     public List<String> Z;
     @SerializedName("7 Express")
@@ -37,5 +39,6 @@ public class SubwayLines {
     public List<String> _6;
     @SerializedName("7")
     public List<String> _7;
+
 
 }
