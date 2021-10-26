@@ -7,7 +7,6 @@ import java.nio.file.Paths;
 import java.util.*;
 
 public class JsonToLines {
-    //create Hashtable of String(stationId) and list of strings(connected stationsIds)
     public Hashtable<String, List<String>> getLines() throws IOException {
         //create Gson instance
         Gson gson = new Gson();
@@ -27,6 +26,11 @@ public class JsonToLines {
         return allTrainLines;
     }
 
+    /**
+     * create Hashtable of String(stationId) and list of strings(connected stationsIds)
+     * @param trainLines hashtable of all the train lines
+     * @return hashtable of stations to a list connecting stations
+     */
     public Hashtable<String, List<String>> getConnectedStations(Hashtable<String, List<String>> trainLines) {
         //station(string) to connectedStations list hashtable
         Hashtable<String, List<String>> connectedStations = new Hashtable<>();
