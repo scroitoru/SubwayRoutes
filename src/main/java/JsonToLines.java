@@ -29,7 +29,7 @@ public class JsonToLines {
     /**
      * create Hashtable of String(stationId) and list of strings(connected stationsIds)
      * @param trainLines hashtable of all the train lines
-     * @return hashtable of stations to a list connecting stations
+     * @return hashtable of stations paired to a list connecting stations
      */
     public Hashtable<String, List<String>> getConnectedStations(Hashtable<String, List<String>> trainLines) {
         //station(string) to connectedStations list hashtable
@@ -91,11 +91,8 @@ public class JsonToLines {
 
 
     //for myself for testing
-    public static void printConnectedStations(String stationId, Hashtable<String, List<String>> stations) {
-        for (String neighborId : stations.get(stationId)) {
-            System.out.print(neighborId + " ");
-        }
-        System.out.println();
+    public void printConnectedStations(String stationId, Hashtable<String, List<String>> stations) {
+        System.out.println(stations.get(stationId));
     }
 
 //    public static void main(String[] args) throws IOException {
