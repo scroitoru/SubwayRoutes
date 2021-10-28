@@ -2,6 +2,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.List;
 
@@ -15,25 +16,30 @@ class JsonToLinesTest {
         JsonToLines parseJson = new JsonToLines();
 
         //when
-        Hashtable<String, List<String>> linesHashtable = parseJson.getLines();
+        HashMap<String, List<String>> linesToHashMap = parseJson.getLines();
 
         //then
-        assertNotNull(linesHashtable);
+        assertNotNull(linesToHashMap);
     }
 
 
-//    @Test
-//    void getConnectedStations(){
-//        //given
-//        JsonToLines parseJson = new JsonToLines();
-//
-//        //when
-//        Hashtable<String, List<String>> linesHashtable = parseJson.getLines();
-//        Hashtable<String, List<String>> connectedStations = parseJson.getConnectedStations(linesHashtable);
-//
-//        //then
-//        for (String lineName : connectedStations.keySet()){
-//            List<String> line = linesHashtable.get(lineName);
+    @Test
+    void getConnectedStations() throws IOException{
+        //given
+        JsonToLines parseJson = new JsonToLines();
+        String stationId = "328";
+
+        //when
+        HashMap<String, List<String>> linesHashtable = parseJson.getLines();
+        HashMap<String, List<String>> connectedStations = parseJson.getConnectedStations(linesHashtable);
+
+        //then
+        assertEquals("[327, 330, 345]", connectedStations.get(stationId));
+
+
+
+        //        for (String neighborId : connectedStations.get(stationId)){
+//            assertEquals("[327, 330, 345]", connectedStations.get(neighborId));
 //        }
-//    }
+    }
 }

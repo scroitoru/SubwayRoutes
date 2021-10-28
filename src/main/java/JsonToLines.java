@@ -7,7 +7,7 @@ import java.nio.file.Paths;
 import java.util.*;
 
 public class JsonToLines {
-    public Hashtable<String, List<String>> getLines() throws IOException {
+    public HashMap<String, List<String>> getLines() throws IOException {
         //create Gson instance
         Gson gson = new Gson();
 
@@ -18,7 +18,7 @@ public class JsonToLines {
         Lines lines = gson.fromJson(reader, Lines.class);
 
         //create Hashtable for the trainLines name and the trainLines list containing station ids
-        Hashtable<String, List<String>> allTrainLines = linesToHashtable(lines);
+        HashMap<String, List<String>> allTrainLines = linesToHashMap(lines);
 
         // close reader
         reader.close();
@@ -31,9 +31,9 @@ public class JsonToLines {
      * @param trainLines hashtable of all the train lines
      * @return hashtable of stations paired to a list connecting stations
      */
-    public Hashtable<String, List<String>> getConnectedStations(Hashtable<String, List<String>> trainLines) {
+    public HashMap<String, List<String>> getConnectedStations(HashMap<String, List<String>> trainLines) {
         //station(string) to connectedStations list hashtable
-        Hashtable<String, List<String>> connectedStations = new Hashtable<>();
+        HashMap<String, List<String>> connectedStations = new HashMap<>();
         for (String lineName : trainLines.keySet()) {
             List<String> line = trainLines.get(lineName);
             //each line has at least 1 station, if the first station of that line is not in hashTable, add it
@@ -57,8 +57,8 @@ public class JsonToLines {
         return connectedStations;
     }
 
-    private Hashtable<String, List<String>> linesToHashtable(Lines lines) {
-        Hashtable<String, List<String>> trainLines = new Hashtable<String, List<String>>();
+    private HashMap<String, List<String>> linesToHashMap(Lines lines) {
+        HashMap<String, List<String>> trainLines = new HashMap<>();
         //add the lines to the hashtable
         trainLines.put("A", lines.A);
         trainLines.put("B", lines.B);
@@ -91,14 +91,14 @@ public class JsonToLines {
 
 
     //for myself for testing
-    public void printConnectedStations(String stationId, Hashtable<String, List<String>> stations) {
+    public static void printConnectedStations(String stationId, HashMap<String, List<String>> stations) {
         System.out.println(stations.get(stationId));
     }
 
 //    public static void main(String[] args) throws IOException {
-//        Hashtable<String, List<String>> trainLines = getLines();
-//        System.out.println(getLines());
-//        Hashtable<String, List<String>> stations = getConnectedStations(trainLines);
-//        printConnectedStations("16", stations);
+//        HashMap<String, List<String>> trainLines = getLines();
+////        System.out.println(getLines());
+//        HashMap<String, List<String>> stations = getConnectedStations(trainLines);
+//        printConnectedStations("328", stations);
 //    }
 }
