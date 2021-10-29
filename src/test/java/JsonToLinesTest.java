@@ -1,10 +1,7 @@
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Hashtable;
-import java.util.List;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -32,14 +29,9 @@ class JsonToLinesTest {
         //when
         HashMap<String, List<String>> linesHashtable = parseJson.getLines();
         HashMap<String, List<String>> connectedStations = parseJson.getConnectedStations(linesHashtable);
+        List<String> connections328 = Arrays.asList("372", "330", "345");
 
         //then
-        assertEquals("[327, 330, 345]", connectedStations.get(stationId));
-
-
-
-        //        for (String neighborId : connectedStations.get(stationId)){
-//            assertEquals("[327, 330, 345]", connectedStations.get(neighborId));
-//        }
+        assertEquals(connections328, connectedStations.get(stationId));
     }
 }
