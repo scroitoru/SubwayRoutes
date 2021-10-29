@@ -3,8 +3,6 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 public class Lines {
-    public List<List<String>> allLines;
-    public List<String> lineNames;
     public List<String> A;
     public List<String> B;
     public List<String> C;
