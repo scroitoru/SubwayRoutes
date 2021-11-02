@@ -73,7 +73,6 @@ public class JsonToLines {
         trainLines.put("N", lines.N);
         trainLines.put("Q", lines.Q);
         trainLines.put("R", lines.R);
-        trainLines.put("S", lines.S);
         trainLines.put("W", lines.W);
         trainLines.put("Z", lines.Z);
         trainLines.put("_7Express", lines._7Express);
@@ -97,7 +96,7 @@ public class JsonToLines {
 
 //    public static void main(String[] args) throws IOException {
 //        HashMap<String, List<String>> trainLines = getLines();
-////        System.out.println(getLines());
+////      System.out.println(getLines());
 //        HashMap<String, List<String>> stations = getConnectedStations(trainLines);
 //        printConnectedStations("328", stations);
 //    }

@@ -3,24 +3,7 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 public class Lines {
-    public List<List<String>> allLines;
-    public List<String> lineNames;
-    public List<String> A;
-    public List<String> B;
-    public List<String> C;
-    public List<String> D;
-    public List<String> E;
-    public List<String> F;
-    public List<String> G;
-    public List<String> J;
-    public List<String> L;
-    public List<String> M;
-    public List<String> N;
-    public List<String> Q;
-    public List<String> R;
-    public List<String> S;
-    public List<String> W;
-    public List<String> Z;
+    public List <String> A, B, C, D, E, F, G, J, L, M, N, Q , R, W, Z;
     @SerializedName("7 Express")
     public List<String> _7Express;
     @SerializedName("6 Express")
@@ -39,6 +22,4 @@ public class Lines {
     public List<String> _6;
     @SerializedName("7")
     public List<String> _7;
-
-
 }

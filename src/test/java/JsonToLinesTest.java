@@ -19,7 +19,6 @@ class JsonToLinesTest {
         assertNotNull(linesToHashMap);
     }
 
-
     @Test
     void getConnectedStations() throws IOException{
         //given
