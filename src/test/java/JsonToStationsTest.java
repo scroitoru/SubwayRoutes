@@ -18,7 +18,7 @@ class JsonToStationsTest {
         assertEquals("Astor Pl", stations.stations.get(0).properties.name);
         assertEquals("http://web.mta.info/nyct/service/", stations.stations.get(0).properties.url);
         assertEquals("4-6-6 Express", stations.stations.get(0).properties.line);
-        assertEquals("1", stations.stations.get(0).properties.objectid);
+        assertEquals(1, stations.stations.get(0).properties.objectid);
         assertEquals("4 nights, 6-all times, 6 Express-weekdays AM southbound, PM northbound", stations.stations.get(0).properties.notes);
         assertEquals(-73.99106999861966, stations.stations.get(0).geometry.coordinates.get(0));
         assertEquals(40.73005400028978, stations.stations.get(0).geometry.coordinates.get(1));

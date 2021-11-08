@@ -7,7 +7,7 @@ import java.nio.file.Paths;
 import java.util.*;
 
 public class JsonToLines {
-    public HashMap<String, List<String>> getLines() throws IOException {
+    public HashMap<String, List<Integer>> getLines() throws IOException {
         //create Gson instance
         Gson gson = new Gson();
 
@@ -18,7 +18,7 @@ public class JsonToLines {
         Lines lines = gson.fromJson(reader, Lines.class);
 
         //create Hashtable for the trainLines name and the trainLines list containing station ids
-        HashMap<String, List<String>> allTrainLines = linesToHashMap(lines);
+        HashMap<String, List<Integer>> allTrainLines = linesToHashMap(lines);
 
         // close reader
         reader.close();
@@ -31,34 +31,36 @@ public class JsonToLines {
      * @param trainLines hashtable of all the train lines
      * @return hashtable of stations paired to a list connecting stations
      */
-    public HashMap<String, List<String>> getConnectedStations(HashMap<String, List<String>> trainLines) {
+    public HashMap<Integer, List<Integer>> getConnectedStations(HashMap<String, List<Integer>> trainLines) {
         //station(string) to connectedStations list hashtable
-        HashMap<String, List<String>> connectedStations = new HashMap<>();
+        HashMap<Integer, List<Integer>> connectedStations = new HashMap<>();
         for (String lineName : trainLines.keySet()) {
-            List<String> line = trainLines.get(lineName);
+            List<Integer> line = trainLines.get(lineName);
             //each line has at least 1 station, if the first station of that line is not in hashTable, add it
             if (!connectedStations.containsKey(line.get(0))) {
-                connectedStations.put(line.get(0), new ArrayList<String>());
+                connectedStations.put(line.get(0), new ArrayList<>());
             }
             //go through all the connectedStations in the line and update the connecting list of each station
             for (int i = 0; i < line.size() - 1; i++) {
+                int neighbor1 = line.get(i);
+                int neighbor2 = line.get(i + 1);
                 // If this station is not in the hash table add it
-                if (!connectedStations.containsKey(line.get(i + 1))) {
-                    connectedStations.put(line.get(i + 1), new ArrayList<String>());
+                if (!connectedStations.containsKey(neighbor2)) {
+                    connectedStations.put(neighbor2, new ArrayList<>());
                 }
                 //if the station at i+1 is not in the connected list of station(i),
                 // put i in the neighbor list of i+1 and put i+1 in the neighbor list of i
-                if (!connectedStations.get(line.get(i)).contains(line.get(i + 1))) {
-                    connectedStations.get(line.get(i)).add(line.get(i + 1));
-                    connectedStations.get(line.get(i + 1)).add(line.get(i));
+                if (!connectedStations.get(neighbor1).contains(neighbor2)) {
+                    connectedStations.get(neighbor1).add(neighbor2);
+                    connectedStations.get(neighbor2).add(neighbor2);
                 }
             }
         }
         return connectedStations;
     }
 
-    private HashMap<String, List<String>> linesToHashMap(Lines lines) {
-        HashMap<String, List<String>> trainLines = new HashMap<>();
+    private HashMap<String, List<Integer>> linesToHashMap(Lines lines) {
+        HashMap<String, List<Integer>> trainLines = new HashMap<>();
         //add the lines to the hashtable
         trainLines.put("A", lines.A);
         trainLines.put("B", lines.B);

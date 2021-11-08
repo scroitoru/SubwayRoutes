@@ -13,7 +13,7 @@ public class Stations {
 
     public static class Properties {
         String name;
-        String objectid;
+        int objectid;
         String url;
         String line;
         String notes;
@@ -27,8 +27,8 @@ public class Stations {
      *
      * @return HashMap of all station ids mapped to the stations
      */
-    public HashMap<String, Station> getStations(){
-        HashMap<String, Station> allStations = new HashMap<>();
+    public HashMap<Integer, Station> getStations(){
+        HashMap<Integer, Station> allStations = new HashMap<>();
         for (Station station : this.stations){
             allStations.put(station.properties.objectid, station);
         }

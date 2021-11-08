@@ -13,7 +13,7 @@ class JsonToLinesTest {
         JsonToLines parseJson = new JsonToLines();
 
         //when
-        HashMap<String, List<String>> linesToHashMap = parseJson.getLines();
+        HashMap<String, List<Integer>> linesToHashMap = parseJson.getLines();
 
         //then
         assertNotNull(linesToHashMap);
@@ -23,12 +23,12 @@ class JsonToLinesTest {
     void getConnectedStations() throws IOException{
         //given
         JsonToLines parseJson = new JsonToLines();
-        String stationId = "328";
+        int stationId = Integer.parseInt("328");
 
         //when
-        HashMap<String, List<String>> linesHashtable = parseJson.getLines();
-        HashMap<String, List<String>> connectedStations = parseJson.getConnectedStations(linesHashtable);
-        List<String> connections328 = Arrays.asList("327", "330", "345");
+        HashMap<String, List<Integer>> linesHashtable = parseJson.getLines();
+        HashMap<Integer, List<Integer>> connectedStations = parseJson.getConnectedStations(linesHashtable);
+        List<Integer> connections328 = Arrays.asList(328, 330, 328, 327);
 
         //then
         assertEquals(connections328, connectedStations.get(stationId));

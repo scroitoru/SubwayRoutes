@@ -3,33 +3,33 @@ import java.util.HashMap;
 import java.util.List;
 
 public class StationsGraph {
-    private final HashMap<String, StationNode> stationNodes;
+    private final HashMap<Integer, StationNode> stationNodes;
 
     /**
      * Constructor creates all stationNodes in the graph
      * @param stations Hashmap
      */
-    public StationsGraph(HashMap<String, List<String>> stations) {
+    public StationsGraph(HashMap<Integer, List<Integer>> stations) {
         this.stationNodes = new HashMap<>();
         //for each id of the stations hashmap, it creates a stationNode with that id
         //and then puts the id and stationNode in the stationNodes hashMap
-        for(String stationId: stations.keySet()){
+        for(int stationId: stations.keySet()){
             stationNodes.put(stationId, new StationNode(stationId));
         }
         //connecting stationNodes to each other
         //for each id in stations, it stores the neighbors of that stationId in a List
-        for(String stationId : stations.keySet()){
-            List<String> NeighborIds = stations.get(stationId);
+        for(int stationId : stations.keySet()){
+            List<Integer> neighborIds = stations.get(stationId);
             //connects the neighboring nodes to walk over the graph
-            //for each neighborId in the NeighborIds list, adds stationNode of that neighborId to the stationNodes list
-            for(String neighborId : NeighborIds){
+            //for each neighborId in the neighborIds list, adds stationNode of that neighborId to the stationNodes list
+            for(int neighborId : neighborIds){
                 stationNodes.get(stationId).neighbors.add(stationNodes.get(neighborId));
             }
         }
     }
 
     public static class StationNode {
-        String id;
+        int id;
         boolean visited;
         StationNode parent;
         boolean covered;
@@ -37,7 +37,7 @@ public class StationsGraph {
         int distance;
 
         //Constructor
-        public StationNode(String id) {
+        public StationNode(int id) {
             this.id = id;
             this.neighbors = new ArrayList<>();
             distance = Integer.MAX_VALUE;
@@ -50,7 +50,7 @@ public class StationsGraph {
      * @param destination DestinationStation
      * @return List of the stations that lead to the shortest path starting from source to destination
      */
-    public ArrayList<String> getShortestPath(String source, String destination){
+    public ArrayList<Integer> getShortestPath(int source, int destination){
         if (!stationNodes.containsKey(source) || !stationNodes.containsKey(destination)){
             throw new IllegalArgumentException("Either source or destination entered, does not exist");
         }
@@ -101,7 +101,7 @@ public class StationsGraph {
             return null;
         }
         //list of the shortest path with the stationIds of that path
-        ArrayList<String> shortestPath = new ArrayList<>();
+        ArrayList<Integer> shortestPath = new ArrayList<>();
         //adds the ids of all the nodes of the path to the shortestPath list
         while(destinationStation != null){
             shortestPath.add(0, destinationStation.id);
