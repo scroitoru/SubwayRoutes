@@ -26,11 +26,11 @@ public class ConnectedStations {
                 if (!connectedStations.containsKey(neighbor2)) {
                     connectedStations.put(neighbor2, new ArrayList<>());
                 }
-                //if the station at i+1 is not in the connected list of station(i),
-                // put i in the neighbor list of i+1 and put i+1 in the neighbor list of i
+                //if the station neighbor2 is not in the connected list of neighbor1,
+                // put neighbor1 in list of neighbor2 and put neighbor2 in list of neighbor1
                 if (!connectedStations.get(neighbor1).contains(neighbor2)) {
                     connectedStations.get(neighbor1).add(neighbor2);
-                    connectedStations.get(neighbor2).add(neighbor2);
+                    connectedStations.get(neighbor2).add(neighbor1);
                 }
             }
         }

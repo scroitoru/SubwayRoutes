@@ -19,7 +19,7 @@ class ConnectedStationsTest {
         //when
         HashMap<String, List<Integer>> linesHashtable = parseJson.getLines();
         HashMap<Integer, List<Integer>> connectedStationsList = connectedStations.getConnectedStations(linesHashtable);
-        List<Integer> connections328 = Arrays.asList(328, 330, 328, 327);
+        List<Integer> connections328 = Arrays.asList(327, 330, 345);
 
         //then
         assertEquals(connections328, connectedStationsList.get(stationId));
