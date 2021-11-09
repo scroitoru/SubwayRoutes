@@ -13,25 +13,9 @@ class JsonToLinesTest {
         JsonToLines parseJson = new JsonToLines();
 
         //when
-        HashMap<String, List<String>> linesToHashMap = parseJson.getLines();
+        HashMap<String, List<Integer>> linesToHashMap = parseJson.getLines();
 
         //then
         assertNotNull(linesToHashMap);
-    }
-
-
-    @Test
-    void getConnectedStations() throws IOException{
-        //given
-        JsonToLines parseJson = new JsonToLines();
-        String stationId = "328";
-
-        //when
-        HashMap<String, List<String>> linesHashtable = parseJson.getLines();
-        HashMap<String, List<String>> connectedStations = parseJson.getConnectedStations(linesHashtable);
-        List<String> connections328 = Arrays.asList("327", "330", "345");
-
-        //then
-        assertEquals(connections328, connectedStations.get(stationId));
     }
 }
