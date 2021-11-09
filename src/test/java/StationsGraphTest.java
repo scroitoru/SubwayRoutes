@@ -12,11 +12,12 @@ class StationsGraphTest {
     @Test
     void getShortestPath() throws IOException {
         //given
+        ConnectedStations connectedStations = new ConnectedStations();
         JsonToLines parseJson = new JsonToLines();
 
         //when
         HashMap<String, List<Integer>> trainLines = parseJson.getLines();
-        HashMap<Integer, List<Integer>> stations = parseJson.getConnectedStations(trainLines);
+        HashMap<Integer, List<Integer>> stations = connectedStations.getConnectedStations(trainLines);
         StationsGraph graph = new StationsGraph(stations);
         int uticaAve = 135;
         int columbusCircle = 94;

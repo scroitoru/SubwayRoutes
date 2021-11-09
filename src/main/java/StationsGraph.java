@@ -111,9 +111,9 @@ public class StationsGraph {
     }
 
 //    public static void main(String[] args) throws IOException {
-//        HashMap<String, List<String>> trainLines = JsonToLines.getLines();
-//        HashMap<String, List<String>> stations = JsonToLines.getConnectedStations(trainLines);
+//        HashMap<String, List<Integer>> trainLines = JsonToLines.getLines();
+//        HashMap<Integer, List<Integer>> stations = JsonToLines.getConnectedStations(trainLines);
 //        StationsGraph graph = new StationsGraph(stations);
-//        System.out.println(graph.getShortestPath("135", "94"));
+//        System.out.println(graph.getShortestPath(135, 94));
 //    }
 }
